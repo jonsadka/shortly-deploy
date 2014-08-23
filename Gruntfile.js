@@ -67,6 +67,14 @@ module.exports = function(grunt) {
         src: ['public/**/*.js'],
         dest: 'public/allFiles.js',
       }
+    },
+
+    uglify: {
+      my_target: {
+        files: {
+          'public/allFiles.min.js': ['public/allFiles.js']
+        }
+      }
     }
 
   });
@@ -80,6 +88,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('server-dev', function (target) {
     // Running nodejs in a different process and displaying output on the main console
@@ -114,7 +123,8 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
-    'concat'
+    'concat',
+    'uglify'
   ]);
 
 
