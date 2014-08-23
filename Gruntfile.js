@@ -116,7 +116,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
-      'jshint'
+      // 'jshint'
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
