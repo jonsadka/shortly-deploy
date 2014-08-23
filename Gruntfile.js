@@ -64,7 +64,7 @@ module.exports = function(grunt) {
 
     concat: {
       dist: {
-        src: ['public/lib/**/*.js','public/client/**/*.js'],
+        src: ['public/lib/*.js','public/client/*.js'],
         dest: 'public/allFiles.js',
       }
     },
