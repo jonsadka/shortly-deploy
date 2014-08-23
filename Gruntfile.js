@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 
     jshint: {
       files: [
-        // Add filespec list here
+        'test/*.js'
       ],
       options: {
         force: 'true',
@@ -116,7 +116,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
-      // add your production server task here
+      'jshint'
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
