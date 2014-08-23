@@ -20,9 +20,6 @@ module.exports = function(grunt) {
       }
     },
 
-    uglify: {
-    },
-
     jshint: {
       files: [
         'test/*.js'
@@ -63,19 +60,26 @@ module.exports = function(grunt) {
     },
 
     concat: {
-      dist: {
+      server: {
         // load backbone dependencies before backbone
         src: ['public/lib/jquery.js','public/lib/underscore.js', 
-              'public/lib/backbone.js', 'public/lib/handlebars.js',
-              'public/client/*.js'],
-        dest: 'public/allFiles.js',
+              'public/lib/handlebars.js', 'public/lib/backbone.js'],
+        dest: 'public/serverDependencies.js'
+      },
+      client: {
+        src: ['public/client/app.js', 'public/client/link.js',
+              'public/client/links.js', 'public/client/linkView.js',
+              'public/client/linksView.js', 'public/client/createLinkView.js',
+              'public/client/router.js'],
+        dest: 'public/clientFiles.js'
       }
     },
 
     uglify: {
       my_target: {
         files: {
-          'public/allFiles.min.js': ['public/allFiles.js']
+          'public/serverDependencies.min.js': ['public/serverDependencies.js'],
+          'public/clientFiles.min.js': ['public/clientFiles.js']
         }
       }
     }
@@ -126,7 +130,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
-    'concat',
+    'concat:server', 'concat:client',
     'uglify'
   ]);
 
