@@ -64,7 +64,10 @@ module.exports = function(grunt) {
 
     concat: {
       dist: {
-        src: ['public/lib/*.js','public/client/*.js'],
+        // load backbone dependencies before backbone
+        src: ['public/lib/jquery.js','public/lib/underscore.js', 
+              'public/lib/backbone.js', 'public/lib/handlebars.js',
+              'public/client/*.js'],
         dest: 'public/allFiles.js',
       }
     },
